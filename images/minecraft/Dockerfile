@@ -5,6 +5,8 @@ FROM ${BASE_APP_IMAGE}
 ARG DEBIAN_FRONTEND=noninteractive
 # see: https://github.com/AppImage/AppImageKit/wiki/FUSE#docker
 ENV APPIMAGE_EXTRACT_AND_RUN=1
+ENV QT_QPA_PLATFORM=xcb
+ENV RUN_SWAY=true
 
 # Install prereqs
 RUN \
@@ -43,6 +45,7 @@ RUN \
             libglu1-mesa \
             libusb-1.0-0 \
             software-properties-common \
+            xwayland \
             && \
     # Cleanup \
 		apt-get autoremove -y && \
